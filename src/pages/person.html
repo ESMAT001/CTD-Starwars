@@ -1,0 +1,102 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Person</title>
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico" />
+</head>
+
+<body
+    class="min-h-screen bg-starwar bg-scroll bg-cover bg-no-repeat bg-gradient-to-br from-black to-dark-blue backdrop-blur-lg  text-gray-100 p-10 font-raleway">
+    <div class="z-10 absolute h-screen w-screen bg-gradient-to-bl from-black to-dark-blue top-0 left-0 flex justify-center items-center space-x-6"
+        id="loading">
+        <div class="lds-ring drop-shadow-xl">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <p class="font-star-wars tracking-widest text-2xl drop-shadow-2xl">
+            Loading...
+        </p>
+    </div>
+    <nav class="flex flex-col items-center space-y-5 divide-y-4">
+        <h1 class="text-center"><span class="text-3xl md:text-5xl font-star-wars tracking-widest ">
+                STAR WARS
+            </span></h1>
+        <ul class="font-star-wars tracking-widest text-white flex space-x-4">
+            <li>
+                <a href="/" class="">Home</a>
+            </li>
+            <li>
+                <a href="/movies" class="">Movies</a>
+            </li>
+            <li>
+                <a href="/people" class="">People</a>
+            </li>
+            <li>
+                <a href="/planets" class="">Planets</a>
+            </li>
+        </ul>
+
+    </nav>
+    <main class="py-20 space-y-10 ">
+        <div class="" id="person"></div>
+        
+        <div class="flex  items-center">
+            <h2 class="font-star-wars tracking-widest text-2xl md:text-3xl">Films</h2>
+            <div class="lds-ring drop-shadow-xl scale-75 -mb-2" id="films-loading">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-8" id="films">
+        </div>
+    </main>
+    <footer>
+        <div class="flex justify-between items-center">
+            <p class="text-sm text-gray-600">
+                STAR WARS © 2022
+            </p>
+            <p class="text-sm text-gray-600">
+                Created By <a href="https://esmatullah.com">Esmatullah Niazi</a>
+            </p>
+        </div>
+    </footer>
+    <script>
+        const obj = {
+            "name": "Luke Skywalker",
+            "height": "172",
+            "mass": "77",
+            "hair_color": "blond",
+            "skin_color": "fair",
+            "eye_color": "blue",
+            "birth_year": "19BBY",
+            "gender": "male",
+            "homeworld": "https://swapi.dev/api/planets/1/",
+            "films": [
+                "https://swapi.dev/api/films/1/",
+                "https://swapi.dev/api/films/2/",
+                "https://swapi.dev/api/films/3/",
+                "https://swapi.dev/api/films/6/"
+            ],
+            "species": [],
+            "vehicles": [
+                "https://swapi.dev/api/vehicles/14/",
+                "https://swapi.dev/api/vehicles/30/"
+            ],
+            "starships": [
+                "https://swapi.dev/api/starships/12/",
+                "https://swapi.dev/api/starships/22/"
+            ],
+            "created": "2014-12-09T13:50:51.644000Z",
+            "edited": "2014-12-20T21:17:56.891000Z",
+            "url": "https://swapi.dev/api/people/1/"
+        }
+    </script>
+</body>
+
+</html>

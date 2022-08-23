@@ -1,0 +1,42 @@
+{
+  "name": "ctd-starwars",
+  "version": "1.0.0",
+  "description": "Code The Dream pre work Assessment",
+  "main": "index.js",
+  "scripts": {
+    "start": "npx webpack-dev-server",
+    "clean": "npx rimraf dist/",
+    "build": "npm run clean && npx cross-env NODE_ENV=production npx webpack-cli",
+    "build:dev": "npm run clean && npx cross-env NODE_ENV=development npx webpack-cli"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ESMAT001/CTD-Starwars.git"
+  },
+  "author": "ESMAT001",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ESMAT001/CTD-Starwars/issues"
+  },
+  "homepage": "https://github.com/ESMAT001/CTD-Starwars#readme",
+  "devDependencies": {
+    "@babel/core": "^7.18.10",
+    "@babel/preset-env": "^7.18.10",
+    "babel-loader": "^8.2.5",
+    "@tailwindcss/forms": "^0.5.2",
+    "autoprefixer": "^10.4.7",
+    "copy-webpack-plugin": "^11.0.0",
+    "css-loader": "^6.7.1",
+    "esbuild-loader": "^2.19.0",
+    "html-inline-css-webpack-plugin": "^1.11.1",
+    "html-webpack-plugin": "^5.5.0",
+    "mini-css-extract-plugin": "^2.6.1",
+    "postcss": "^8.4.14",
+    "postcss-import": "^14.1.0",
+    "postcss-loader": "^7.0.1",
+    "tailwindcss": "^3.1.6",
+    "webpack": "^5.74.0",
+    "webpack-cli": "^4.10.0",
+    "webpack-dev-server": "^4.9.3"
+  }
+}
