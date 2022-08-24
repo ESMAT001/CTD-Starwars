@@ -22,13 +22,14 @@ export async function fetchData({
   variant = "films",
   id,
   setLoadingText = () => { },
+  page = 1
 } = {}) {
   setLoadingText();
   if (id) {
     const url = `${BASE_API_URL}${variant}/${id}`;
     return await fetchWithErrorHandling({ url });
   }
-  const url = `${BASE_API_URL}${variant}`;
+  const url = `${BASE_API_URL}${variant}/?page=${page === null ? 1 : page}`;
   return await fetchWithErrorHandling({ url });
 }
 
@@ -73,8 +74,8 @@ export function showError(error) {
   document.body.append(errorDiv);
 }
 
-export function getUrlParams(param = "id") {
-  const params = new Proxy(new URLSearchParams(window.location.search), {
+export function getUrlParams(param = "id", url = null) {
+  const params = new Proxy(new URLSearchParams(url !== null ? url.split("/").pop() : window.location.search), {
     get: (searchParams, prop) => searchParams.get(prop),
   });
   return params[param];
@@ -128,7 +129,7 @@ export function renderMovies(movies = [], moviesContainer) {
   });
 }
 
-export function renderPeople(people = [],peopleContainer) {
+export function renderPeople(people = [], peopleContainer) {
   people.forEach((person) => {
     const div = document.createElement("div");
     div.setAttribute("class", DIV_STYLES);
@@ -153,4 +154,50 @@ export function renderPeople(people = [],peopleContainer) {
 
     peopleContainer.append(div);
   });
+}
+
+export function renderPlanets(planets = [], planetsContainer) {
+  planets.forEach((planet) => {
+    const div = document.createElement("div");
+    div.setAttribute("class", DIV_STYLES);
+
+    const h3 = document.createElement("h3");
+    h3.setAttribute("class", H3_STYLES);
+    h3.textContent = planet.name;
+    div.append(h3);
+
+    ["diameter", "climate", "population", "terrain"].forEach((entity) => {
+      const el = document.createElement("p");
+      el.textContent = `${entity} : ${planet[entity]}`;
+      el.setAttribute("class", "font-semibold");
+      div.append(el);
+    });
+
+    const link = document.createElement("a");
+    link.setAttribute("href", `/planet.html?id=${getIdFromUrl(planet.url)}`);
+    link.textContent = "Read more";
+    link.setAttribute("class", "btn");
+    div.append(link);
+
+    planetsContainer.append(div);
+  });
+}
+
+
+export function pagination(varient = "movies", { next = null, previous = null } = {}) {
+  const paginationContainer = document.querySelector("#pagination")
+  if (next !== null) {
+    const link = document.createElement("a")
+    link.setAttribute("class", 'btn')
+    link.setAttribute('href', `/${varient}.html?page=${getUrlParams("page", next)}`)
+    link.textContent = "next"
+    paginationContainer.append(link)
+  }
+  if (previous !== null) {
+    const link = document.createElement("a")
+    link.setAttribute("class", 'btn')
+    link.setAttribute('href', `/${varient}.html?page=${getUrlParams("page", previous)}`)
+    link.textContent = 'previous'
+    paginationContainer.append(link)
+  }
 }
