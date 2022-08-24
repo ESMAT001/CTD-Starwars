@@ -1,81 +1,11 @@
 import "../js/base";
-import { fetchData, loading, showError, getIdFromUrl } from "../js/utils";
+import { fetchData, loading, showError, getIdFromUrl, renderMovies, renderPeople, H3_STYLES, DIV_STYLES } from "../js/utils";
 
 const MOVIES_CONTAINER = document.querySelector("#movies");
 const PEOPLE_CONTAINER = document.querySelector("#people");
 const PLANETS_CONTAINER = document.querySelector("#planets");
-const DIV_STYLES = "card";
-const H3_STYLES = "font-star-wars tracking-widest text-2xl";
 
-function renderMovies(movies = []) {
-  const directorStyles = "font-semibold";
-  const overviewStyles = "text-sm";
-  const realeasedDateStyles = "font-semibold text-xs";
-  movies.forEach((movie) => {
-    const div = document.createElement("div");
-    div.setAttribute("class", DIV_STYLES);
 
-    const h3 = document.createElement("h3");
-    h3.setAttribute("class", H3_STYLES);
-    h3.textContent = movie.title;
-    div.append(h3);
-
-    const director = document.createElement("p");
-    director.textContent = `Director : ${movie.director}`;
-    director.setAttribute("class", directorStyles);
-    div.append(director);
-
-    const releasedDate = document.createElement("p");
-    releasedDate.textContent = `Released Date : ${new Date(
-      movie.release_date
-    ).toDateString()}`;
-    releasedDate.setAttribute("class", realeasedDateStyles);
-    div.append(releasedDate);
-
-    const overview = document.createElement("p");
-    overview.textContent = `Overview : ${movie.opening_crawl.substring(
-      0,
-      150
-    )} ...`;
-    overview.setAttribute("class", overviewStyles);
-    div.append(overview);
-
-    const link = document.createElement("a");
-    link.setAttribute("href", `/movie.html?id=${movie.episode_id}`);
-    link.textContent = "Read more";
-    link.setAttribute("class", "btn");
-    div.append(link);
-
-    MOVIES_CONTAINER.append(div);
-  });
-}
-
-function renderPeople(people = []) {
-  people.forEach((person) => {
-    const div = document.createElement("div");
-    div.setAttribute("class", DIV_STYLES);
-
-    const h3 = document.createElement("h3");
-    h3.setAttribute("class", H3_STYLES);
-    h3.textContent = person.name;
-    div.append(h3);
-
-    ["gender", "height", "mass"].forEach((entity) => {
-      const el = document.createElement("p");
-      el.textContent = `${entity} : ${person[entity]}`;
-      el.setAttribute("class", "font-semibold");
-      div.append(el);
-    });
-
-    const link = document.createElement("a");
-    link.setAttribute("href", `/person.html?id=${getIdFromUrl(person.url)}`);
-    link.textContent = "Read more";
-    link.setAttribute("class", "btn");
-    div.append(link);
-
-    PEOPLE_CONTAINER.append(div);
-  });
-}
 
 function renderPlanets(planets = []) {
   planets.forEach((planet) => {
@@ -115,7 +45,7 @@ async function main() {
       console.log(error);
       return;
     }
-    renderMovies(movies.results);
+    renderMovies(movies.results, MOVIES_CONTAINER);
 
     const [people, error2] = await fetchData({
       variant: "people",
@@ -125,7 +55,7 @@ async function main() {
       console.log(error2);
       return;
     }
-    renderPeople(people.results);
+    renderPeople(people.results, PEOPLE_CONTAINER);
 
     const [planets, error3] = await fetchData({
       variant: "planets",

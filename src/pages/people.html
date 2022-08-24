@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Planet</title>
+    <title>People</title>
     <link rel="icon" type="image/x-icon" href="/static/favicon.ico" />
 </head>
 
@@ -41,40 +41,26 @@
         </ul>
 
     </nav>
-    <main class="py-10">
-        <div class="space-y-4 grid grid-cols-1 md:grid-cols-3 gap-2 mb-10" id="planet"></div>
-        <div class="flex  items-center">
-            <h2 class="font-star-wars tracking-widest text-2xl md:text-3xl">Residents</h2>
-            <div class="lds-ring drop-shadow-xl scale-75 -mb-2" id="residents-loading">
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
+    <main class="p-10 space-y-14">
+
+        <section>
+
+            <h2 class="font-star-wars tracking-widest text-2xl md:text-3xl mb-10">People</h2>
+
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8" id="people">
             </div>
-        </div>
-        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 py-8" id="residents">
-        </div>
-        <div class="flex  items-center">
-            <h2 class="font-star-wars tracking-widest text-2xl md:text-3xl">Films</h2>
-            <div class="lds-ring drop-shadow-xl scale-75 -mb-2" id="films-loading">
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-            </div>
-        </div>
-        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 py-8 font-star-wars text-2xl" id="films">
-        </div>
+        </section>
+
     </main>
-    <footer>
-        <div class="flex justify-between items-center">
-            <p class="text-sm text-gray-600">
-                STAR WARS © 2022
-            </p>
-            <p class="text-sm text-gray-600">
-                Created By <a href="https://esmatullah.com">Esmatullah Niazi</a>
-            </p>
-        </div>
+    <footer class="flex justify-between items-center">
+        <p class="text-sm text-gray-600">
+            STAR WARS © 2022
+        </p>
+        <p class="text-sm text-gray-600">
+            Created By <a href="https://esmatullah.com">Esmatullah Niazi</a>
+        </p>
+
     </footer>
 </body>
 
