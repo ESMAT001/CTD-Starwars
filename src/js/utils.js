@@ -120,7 +120,7 @@ export function renderMovies(movies = [], moviesContainer) {
     div.append(overview);
 
     const link = document.createElement("a");
-    link.setAttribute("href", `/movie.html?id=${movie.episode_id}`);
+    link.setAttribute("href", `/movie.html?id=${getIdFromUrl(movie.url)}`);
     link.textContent = "Read more";
     link.setAttribute("class", "btn");
     div.append(link);
