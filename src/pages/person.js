@@ -23,7 +23,7 @@ function renderEntities(entities = [], person = {}) {
 
         if (error) return showError(error);
 
-        const targetContainer = FILMS_CONTAINER ;
+        const targetContainer = FILMS_CONTAINER;
         const entityLink = document.createElement("a");
 
         entityLink.setAttribute('href', `/movie.html?id=${getIdFromUrl(data.url)}`)

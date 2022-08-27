@@ -8,9 +8,6 @@ module.exports = {
       colors: {
         'dark-blue': '#11214e',
       },
-      backgroundImage: {
-        starwars: "url('/static/starwars.jpg')",
-      },
       fontFamily: {
         "star-wars": ["Starwars", ...defaultTheme.fontFamily.sans],
         raleway: ["Raleway", ...defaultTheme.fontFamily.sans],

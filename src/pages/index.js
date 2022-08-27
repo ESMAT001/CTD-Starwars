@@ -8,7 +8,8 @@ const PLANETS_CONTAINER = document.querySelector("#planets");
 
 async function main() {
   try {
-
+    //intializing loader 
+    //the id of loader container is passed to function
     const [hideLoading, setLoadingText] = loading("loading");
     const [movies, error] = await fetchData({
       setLoadingText: setLoadingText("films"),

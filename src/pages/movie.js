@@ -8,6 +8,8 @@ const PLANETS_LOADING = document.querySelector("#planets-loading");
 const PEOPLE_LOADING = document.querySelector("#people-loading");
 
 function renderEntities(entities = [], movie = {}) {
+  //function checks if entity fetching is finished or not if yes remove the loader of the entity
+  //this is done by comparing the entity length and the specific container child length
   function checkIfFinished(entity) {
     const baseLength = movie[entity].length;
     const container =
@@ -16,6 +18,7 @@ function renderEntities(entities = [], movie = {}) {
       (entity === "characters" ? PEOPLE_LOADING : PLANETS_LOADING).remove();
     }
   }
+  
   entities.forEach((entity) => {
 
     const list = movie[entity];

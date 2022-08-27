@@ -19,9 +19,9 @@ export async function fetchWithErrorHandling({
 }
 
 export async function fetchData({
-  variant = "films",
+  variant = "films", //type of data to be fetched
   id,
-  setLoadingText = () => { },
+  setLoadingText = () => { }, // custom function to change loading text while data is loading
   page = 1
 } = {}) {
   setLoadingText();
@@ -38,16 +38,16 @@ export function loading(id) {
   const loading = document.getElementById(id);
   const loadingTxt = document.querySelector(`#${id} > p`);
   return [
-    () => {
+    () => { //this function is used to remove the loader after the data is loaded
       loading.remove();
       document.body.classList.remove("overflow-hidden");
     },
-    (txt) => {
+    (txt) => { // this function is use to change loader text
       return () => (loadingTxt.textContent = `Loading ${txt}`);
     },
   ];
 }
-
+//custom function to handle error and show message to use
 export function showError(error) {
   console.error(error);
   const errorDiv = document.createElement("div");
@@ -74,15 +74,15 @@ export function showError(error) {
   document.body.append(errorDiv);
 }
 
+//this function is used to get parameters from url
 export function getUrlParams(param = "id", url = null) {
-  const params = new Proxy(new URLSearchParams(url !== null ? url.split("/").pop() : window.location.search), {
-    get: (searchParams, prop) => searchParams.get(prop),
-  });
-  return params[param];
+  //this function will return the specific "param" from url that is passed to the function or from the current page url
+  return new URLSearchParams(url !== null ? url.split("/").pop() : window.location.search).get(param)
 }
 
-
+//this function is use to get id from a url
 export function getIdFromUrl(url) {
+  //this function first removes the last '/' and creates array based on '/' and returns the last elment which is the id
   return url.slice(0, -1).split("/").pop()
 }
 
@@ -183,7 +183,7 @@ export function renderPlanets(planets = [], planetsContainer) {
   });
 }
 
-
+//function to create pagination 
 export function pagination(varient = "movies", { next = null, previous = null } = {}) {
   const paginationContainer = document.querySelector("#pagination")
   if (next !== null) {
